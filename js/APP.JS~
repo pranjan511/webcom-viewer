@@ -1,0 +1,75 @@
+var wvmodule = angular.module("webcomviewer", ["firebase"]);
+
+wvmodule.controller("wvcontroller", ["$scope", "$firebaseAuth", "$firebaseArray",
+	  function($scope, $firebaseAuth, $firebaseArray) {
+		var ref = new Webcom("https://webcom.orange.com/base/mysensordb/node");
+		$scope.options = ["exists", "protocol", "sketch name", "eui", "sketch version"];
+		$scope.selected = $scope.options[0];
+		/*$scope.changedSelected() = function(){
+		$scope.sortId = $scope.selected;	
+		console.log($scope.sortId);
+		}*/
+		$scope.nodes = $firebaseArray(ref);
+	}
+]);
+
+
+
+/*
+//$scope.mydisabled=true;		
+		//ref.unauth();
+		//ref.logout();
+		//var authObj = $firebaseAuth(ref);
+		$scope.options = ["Name", "Status", "EUI", "Type", "Version", "Library version"];
+		$scope.selected = $scope.options[0];
+			
+			//for new user registration --working solution
+			/*$scope.signup = function(){				
+				var id = $scope.email;
+				var p1 = $scope.pwd;
+				var p2 = $scope.cpwd;
+				if(id != null && id.match(/\@/) && p1 != null && p1!= "" && p1.length >= 1 && p1 == p2)
+				{
+					ref.createUser(id, p1, function(error, data){
+								if(error){
+										switch (error.code){
+											case "EMAIL_TAKEN":		
+												console.error("Email already in use");
+												break;
+											case "INVALID_EMAIL":		
+												console.error("Email is not valid");
+												break;
+											
+											default:
+											console.error("Error occurred");
+											}
+										}
+								else 	{
+										console.log("User created successfully ");
+									 	}
+						});
+					}
+				else
+					{
+					console.error("e-mail or password not valid");
+					}
+}
+			//login function for existing user
+			/*$scope.login = function()
+			{   
+				console.log("login");
+					ref.authWithPassword({
+										email:$scope.rEmail,
+										password:$scope.rPwd
+										}, function(error, auth){
+				    	  					if(auth){
+				    		  						$scope.mydisabled = false;
+				    		  						console.log("Authenticated successfully. Value of payload : ", auth);
+				    		 						}
+				    	  					else	{
+				    		  						console.log("Login Failed", error);
+				    		 						}
+				    	  					})
+				}			
+			$scope.nodes = $firebaseArray(ref);
+*/

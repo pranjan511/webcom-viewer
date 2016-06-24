@@ -1,0 +1,190 @@
+table, th, td{
+	border: 1px solid grey;
+	border-collapse: collapse;
+	padding: 5px;
+
+}
+table tr:nth-child(odd) {
+	background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+	background-color: #ffffff;
+}
+
+body {
+  background-color: #f5f5f5;
+  line-height: 0.5;
+  padding-bottom: 20px;
+}
+
+nav {    
+	margin:-10px -10px;
+	line-height:0.5;
+    overflow:hide;
+}
+
+nav div li {
+    /* This allow us to arrange list items in a row, without using float */
+    display: inline-block;
+    list-style: none;
+}
+
+/* Create a style for the first level items */
+nav > div > li > a {
+    color: #666666;
+    background-color:transparent;
+    display: inline-block;
+    text-decoration: none;
+	padding:0.4em 0.0em;
+	margin-left:0.5em;
+}
+nav > div > li > a:hover {
+    color:#404040;
+}
+.wv-header
+{
+	color: #aaa;
+	text-decoration:none;
+}
+.row {
+	display: inline-block;
+	overflow:hide;
+	margin-left:0.5em;
+	background-color: black;
+}
+
+div > li > a{
+    background-color:transparent;
+    display: block;
+    text-decoration: none;
+}
+
+.wv-top-space-5px
+{
+  margin-top: 5px;
+}
+
+.wv-side-space{
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.center {
+text-align: center;
+}
+
+.wv-align-center {
+    text-align: center; /* center checkbox horizontally */
+    vertical-align: middle; /* center checkbox vertically */
+}
+
+.wv-spinner-container-alone {
+  margin-top: 220px;
+}
+.wv-table {
+  background-color: #ffffff;
+}
+
+.wv-table > thead > tr > th {
+  background-color: #313131;
+  color: #d0d0d0;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  vertical-align: middle;
+}
+
+.wv-table > tbody > tr > td {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  vertical-align: middle;
+}
+
+.wv-table > tbody > tr:hover > td {
+  cursor: pointer;
+  background-color:#a3c1db;
+}
+
+.wv-table > tbody > tr.wv-selected > td{
+  background-color: #4077a5;
+  color: white;
+}
+
+.wv-table > tbody > tr.wv-selected > td .pficon,
+.wv-table > tbody > tr.wv-selected > td .fa{
+  color: #ffffff;
+}
+/* ADF css */
+.adf-wvct {
+  text-align: center;
+}
+
+.adf-wv-time {
+  font-size: 300%;
+}
+
+.adf-wv-date {
+  font-size: 200%;
+}
+
+.adf-wv-timezone {
+  font-size: 80%;
+}
+
+/* sunrise sun set*/
+.adf-wv {
+  text-align: center;
+}
+
+.adf-wv-time {
+  font-size: 200%;
+}
+
+.adf-wv-time > i{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom:10px;
+  font-size: 150%;
+  vertical-align: middle;
+}
+
+.close-colorpicker:hover {
+  background-color:grey;
+}
+.wv-top-space-header{
+  margin-top: 25px;
+}
+.wv-top-space-items{
+margin-top:11.0em;
+}
+
+.navbar-pf {
+  margin-bottom: 10px;
+}
+@media (min-width: 768px) {
+  .navbar-header {
+    padding: 0px 0;
+  }
+  .navbar-pf .navbar-utility > li > a {
+    padding: 12px 10px;
+  }
+  .navbar-pf .navbar-utility li.dropdown > .dropdown-toggle .pficon-user {
+    top: 12px;
+  }
+}
+@media (max-width: 767px) {
+  .navbar-pf {
+    padding-top: 1px;
+  }
+}
+.align-left{
+float: left;
+}
+
+.wv-v-margin > div {
+  padding:0 20px;
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html ng-app="webcomviewer" lang="en-us" class="no-js" id="rootId">
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>Webcom Viewer</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="/images/favicon.ico">
+	<link rel="stylesheet" href="/css/patternfly/dist/css/patternfly.min.css" />
+    <link rel="stylesheet" href="/css/patternfly/dist/css/patternfly-additions.min.css" />
+    <link rel="stylesheet" href="/css/angular-patternfly/angular-patternfly.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css/font-awesome/css/font-awesome.min.css"></script>
+	<link rel="stylesheet" type="text/css" href="/css/angular-bootstrap-colorpicker/colorpicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/stylesheet.css"></script>
+	<script src="/css/jquery/dist/jquery.min.js"></script>
+	<script src="/css/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/css/c3/c3.min.js"></script>
+    <script src="/css/d3/d3.min.js"></script>
+	<script src="/js/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+	<script src="/js/angular/angular.min.js"></script>
+	<script src="/js/webcom/webcom.js"></script>
+    <script src="/js/angularwebcom-fire/angularwebcom_dirty.js"></script>
+	<script src="/css/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js"></script>
+	<script src="/js/lodash/lodash.min.js"></script>
+	<script src="/css/patternfly/dist/js/patternfly.min.js"></script>
+	<script src="/css/angular-patternfly/angular-patternfly.min.js"></script>
+	<script src="/css/angular-bootstrap-colorpicker/bootstrap-colorpicker-module.min.js"></script>
+	<script src="/js/APP.JS"></script>
+	<script src="/js/nodes/nodes.js"></script>
+	<script src="/js/dashboard/dashboard.js"></script>
+  </head>
+<body ng-controller="wvcontroller">
+<div class="container-fluid"> <!-- Container-fluid -->
+	<nav class="navbar navbar-default navbar-fixed-top navbar-pf wv-top-space-5px" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      
+		<div class="navbar-header">
+        	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
+        	  <span class="sr-only">Toggle navigation</span>
+        	  <span class="icon-bar"></span>
+        	  <span class="icon-bar"></span>
+        	  <span class="icon-bar"></span>
+        	</button>
+
+		<a tabindex="-1" class="navbar-brand" href="/index.html">
+          <strong>Webcom Viewer </strong> <small>webcom based application</small>
+        </a>
+      </div>
+
+<div class="collapse navbar-collapse" id="navbar-collapse-main" ng-controller="HeaderController">
+	<!--ul ng-init="selectedTab ='dashboard'" class="nav navbar-nav navbar-primary persistent-secondary"-->
+	<ul class="nav navbar-nav">
+          <!-- Dashboard -->
+          <li ng-class="{active: isActive('/')}"><a href="/">Dashboards<!--ng-click="selectedTab = 'dashboard'"-->
+            <a ui-sref="dashboard"><i class="fa fa-tachometer fa-lg"></i> Dashboards</a>
+            <ul class="nav navbar-nav navbar-persistent">
+              <li ui-view="dashboardList" ng-class="{active: isActive('/dashboard')}">
+				<a ui-sref="dashboard" href="/partials/dashboard/dashboard.html">Dashboards</a>
+			  </li>
+            </ul>
+	<li ng-class="{active: isActive("/resources")}" >
+            <a ui-sref="gatewaysList" href="/partials/nodes/nodes_list.html"><i class="fa  fa-cubes fa-lg"></i> Resources</a>
+            <ul class="nav navbar-nav navbar-persistent">
+              <li ng-class="{active: isActive("/gateways")}"><a ui-sref="gateways"><i class="fa fa-plug fa-lg"></i> Gateways</a></li>
+              <li ng-class="{active: isActive("/nodes")}"><a ui-sref="nodes" href="/partials/nodes/nodes_list.html"><i class="fa fa-sitemap fa-lg"></i> Nodes</a></li>
+              <li ng-class="{active: isActive("/sensors")}"><a ui-sref="sensors" href="/partials/sensors/sensors-list.html"><i class="fa fa-eye fa-lg"></i> Sensors</a></li>
+            </ul>
+   </li>
+   </ul>
+</div>
+    </nav>
+
+          <!-- Single button -->
+<div class ="wv-top-space-items">
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-disabled="itemIds.length == 0"> Actions<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li ng-class="{'disabled': itemIds.length == 0}"><a href='' ng-click="itemIds.length == 0 || delete()" class="text-danger"><i class="fa fa-lg fa-trash"></i> Delete</a></li>
+              <li ng-class="{'disabled': itemIds.length != 1}"><a href='' ng-click="itemIds.length != 1 || edit()" class="text-default"><i class="fa fa-lg fa-edit"></i> Edit </a></li>
+              <li ng-class="{'disabled': itemIds.length == 0}"><a href='' ng-click="itemIds.length == 0 || eraseConfiguration()" class="text-default"><i class="fa fa-lg fa-eraser"></i> Erase configuration</a></li>
+              <li ng-class="{'disabled': itemIds.length == 0}"><a href='' ng-click="itemIds.length == 0 || reboot()" class="text-default"><i class="fa fa-lg fa-undo"></i> Reboot</a></li>
+              <li ng-class="{'disabled': itemIds.length == 0}"><a href='' ng-click="itemIds.length == 0 || uploadFirmware()" class="text-default"><i class="fa fa-lg fa-upload"></i> Upload firmware</a></li>
+            </ul>
+		  </div>
+
+	<div class="pull-right wv-v-margin" ng-show="filteredList.length > 0">
+        <div pf-sort id="exampleSimpleSort" config="sortConfig"></div>
+	</div>   
+
+<!--select ng-options="x for x in options" ng-model="selected" class="wv-dropdown"></select><i class="fa fa-sort-alpha-asc"></i-->
+<table class="table table-hover table-bordered table-striped wv-table">
+        <thead>
+		<tr>
+          <th><input type="checkbox"></th>
+          <th>exists</th>
+          <th>protocol</th>
+          <th>sketch name</th>
+          <th>eui</th>
+          <th>sketch version</th>
+          <th></th>
+		</tr>
+        </thead>
+	
+	<tbody>
+      <tr ng-repeat="node in nodes" ng-model="nodes.text" ng-change="nodes.$save(node)">{{node.$id}}
+		<td><input type="checkbox"></td>
+		<!--td>{{node.exists}}</td-->
+		<td class="text-center">
+              <!--i ng-show="node.exists === 'true'||'false'" class="pficon pficon-help text-color-gray fa-lg" uib-tooltip="unavailable"></i-->
+              <i ng-show="node.exists === 'false'" class="pficon pficon-error-circle-o fa-lg" uib-tooltip="down"></i>
+              <i ng-show="node.exists != 'true'" class="pficon pficon-ok fa-lg" uib-tooltip="up"></i>
+            </td>
+		<td>{{node.protocol}}</td>
+		<td>{{node.sketchName}}</td>
+		<td>{{node.$id}}</td>
+		<td>{{node.sketchVersion}}</td>
+		<!--td><a class="link" href="/partials/nodes/node-detail.html">></a></td-->
+		<td class="wv-align-center"><a class="btn btn-link" ui-sref="nodeDetail({id:node.$id})" href="/partials/nodes/node-detail.html"><i class="fa fa-chevron-circle-right fa-lg" tooltip="view details" tooltip-placement="top"></i></a></td>
+     </tr>
+	</tbody>
+</table>
+</div>
+</div>
+</body>
+</html>
+
+<!-------------------------------------------------------------->
+<!--div id ="nav"> 	
+	<form id ="signupForm" ng-submit="signup()">
+		<fieldset class= "form">
+			<legend> SignUp </legend>
+			<label>
+			Email address:<br> 
+			<input type ="email" id = "email" placeholder = "email address" ng-model="email" required/><br>
+			</label>
+		
+			<label>
+			Password:<br> 
+			<input type ="password" id = "pwd" placeholder = "password" ng-model="pwd" required/><br>
+			</label>
+		
+			<label>
+			Confirm Password:<br>
+			<input type ="password" id = "cpwd" placeholder = "confirm password" ng-model="cpwd" required/><br><br>
+			</label>
+		
+			<button type="submit">Signup</button><br>
+			<div ng-show=""></div>
+			</form>
+		</fieldset>
+	</div>
+	
+	<div id = "section">
+		<form ng-submit="login()">
+			<fieldset class ="form">
+				<legend>Login</legend>
+	
+				<label>
+				Email address:<br>
+				<input type ="email" id = "rEmail" placeholder= "email address" ng-model="rEmail" required/><br>
+				</label>
+				
+				<label>
+				Password:<br>
+				<input type ="password" id = "rPwd" ng-model="rPwd" placeholder = "password" ng-minlength="6" required/><br><br>
+				</label>
+				
+				<button type="submit">Login</button><br>
+				<div ng-show=""></div>
+				</form>
+			</fieldset>
+	</div>
+	-->
+<!--div class="panel panel-default">
+	<div class="panel-heading clearfix">
+		<div class="btn-group pull-right">
+	      <li ng-class="{ active: $state.current.url.indexOf('/resources') == 0 }">
+               <a ui-sref="gatewaysList"><i class="fa  fa-cubes fa-lg"></i>Resources</a>
+               <ul class="nav navbar-nav navbar-persistent">
+               <li ng-class="{ active: $state.current.name.indexOf('gateways') == 0 }">
+			   <a ui-sref="gatewaysList"><i class="fa fa-plug fa-lg"></i>Gateways</a></li>
+               <li ng-class="{ active: $state.current.name.indexOf('nodes') == 0 }">
+			   <a ui-sref="nodesList"><i class="fa fa-sitemap fa-lg"></i>Nodes</a></li>
+               <li ng-class="{ active: $state.current.name.indexOf('sensors') == 0 }">
+			   <a ui-sref="sensorsList"><i class="fa fa-eye fa-lg"></i>Sensors</a></li>
+		   </ul>
+          </li>
+		</div>
+	</div>
+</div-->

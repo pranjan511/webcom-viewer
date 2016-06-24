@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="webcomviewer" lang="en-us" class="no-js" id="rootId">
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://webcom.orange.com/js/latest/webcom.js"></script>
+    <script src="/js/angularwebcom_dirty.js"></script>
+    <script src="/js/APP.JS"></script>
+	<script src="/js/dashboard.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/stylesheet.css"></script>
+	<link rel="stylesheet" type="text/css" href="/css/font-awesome/css/font-awesome.min.css"></script>
+	<title>Webcom Viewer </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/weather-icons/css/weather-icons.min.css">
+	<link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/angular-dashboard-framework/dist/angular-dashboard-framework.min.css">
+	<script src="/js/angular-bootstrap-colorpicker/bootstrap-colorpicker-module.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/js/angular-bootstrap-colorpicker/colorpicker.min.css"/>
+  </head>
+
+<div id="header" class="navbar-header">
+     <a class="wv-header" href="/index.html"><strong><i class="icon-fixed-width icon-home"></i>Webcom Viewer</a></strong>
+     <small>webcom based application</small>
+
+
+<!--Main Menu(header type)-->	 
+	
+<div class="nav navbar-nav navbar-primary persistent-secondary">
+	<!-- Dashboard-->	
+	<li class="row"><a class ="link close-colorpicker" href="/index.html"><i class="fa fa-tachometer fa-lg"></i> Dashboards </a></li>
+
+	 <!-- Resources-->
+      <li class="row"><a class ="link close-colorpicker" href="/partials/nodes/nodes_list.html"><i class="fa fa-cubes fa-lg"></i> Resources </a></li>
+
+	<!-- Status-->
+      <li class="row"><a class ="link close-colorpicker" href=""><i class="fa fa-file-text-o fa-lg"></i> Status </a></li>
+</div>
+</div>
+<body ng-controller="wvcontroller">
+<ul>
+	<li><a href="/partials/dashboard/dashboard.html">dashboard</a></li>
+	<li><a href="">time widget</a></li>
+</ul>
+</body>
+</html>
