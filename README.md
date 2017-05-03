@@ -1,3 +1,27 @@
+About
+
+webcom-viewer is automation controller for home, office or any place required for managing. this project supports MySensors. Considered system resources in mind on development, as a outcome even we can run it on Raspberry PI (256 MB) very first model.
+
+System Requirement
+
+webcom-viewer is a very lightweight server, It required very less resource, believe me ;)
+
+Disk : ~30 MB (may require more space, when we store metrics data for long time)
+
+Memory(RAM) : 100 MB
+
+Java : 1.8 or later
+
+Supported Platforms (tested)
+
+webcom-viewer is NodeJS based application server with the angularJS frontend. We can run it in any platform where NODEJS support is available.
+
+Linux
+
+Windows
+
+Raspberry PI (Oracle Java recommend)
+
 webcom-viewer is a controller for the sensors world! it is developed to support MySensors.org project. Considered system resources in mind on development. Even we can run it on Raspberry PI very first model. 
 
 How webcom-viewer is effective?
