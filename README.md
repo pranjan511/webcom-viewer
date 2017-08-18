@@ -1,6 +1,7 @@
-About
+## Webcom-viewer
 
-webcom-viewer is automation controller for home, office or any place required for managing. this project supports MySensors. Considered system resources in mind on development, as a outcome even we can run it on Raspberry PI (256 MB) very first model.
+webcom-viewer is a home controller for house, office or an area required to be managed. Webcom-viewer uses MySensors (https://www.mysensors.org). 
+Considered system resources in mind on development, as a outcome even we can run it on Raspberry PI (256 MB) very first model.
 
 System Requirement
 
