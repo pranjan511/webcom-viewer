@@ -5,7 +5,7 @@ Considered system resources in mind on development, as a outcome even we can run
 
 System Requirement
 
-webcom-viewer is a very lightweight server, It required very less resource, believe me ;)
+webcom-viewer is a very lightweight server, It requires very less resource, believe me ;)
 
 Disk : ~30 MB (may require more space, when we store metrics data for long time)
 
@@ -15,16 +15,16 @@ Java : 1.8 or later
 
 Supported Platforms (tested)
 
-webcom-viewer is NodeJS based application server with the angularJS frontend. We can run it in any platform where NODEJS support is available.
+webcom-viewer is NodeJS based application server with the angularJS frontend. We can run it on any platform where NODEJS support is available.
 
 Linux
 
 Windows
 
-Raspberry PI (Oracle Java recommend)
+Raspberry PI (Oracle Java recommended)
 
 webcom-viewer is a controller for the sensors world! it is developed to support MySensors.org project. Considered system resources in mind on development. Even we can run it on Raspberry PI very first model. 
 
 How webcom-viewer is effective?
 
-In simple words, You can monitor and control your home from anywhere. It is home automation server.
+In simple words, You can monitor and control your home from anywhere and client-server can be in different networks. It is home automation server.
